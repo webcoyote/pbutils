@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -euo pipefail
+readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# When this script exits kill all its children
+trap 'kill -- -$$ &>/dev/null' EXIT
+
+"$SCRIPT_DIR/pbcopy/build"  "$@" &
+"$SCRIPT_DIR/pbpaste/build" "$@" &
+
+# Wait until all scripts are done
+wait &>/dev/null
