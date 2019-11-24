@@ -7,6 +7,7 @@ trap 'kill -- -$$ &>/dev/null' EXIT
 
 "$SCRIPT_DIR/pbcopy/build"  "$@" &
 "$SCRIPT_DIR/pbpaste/build" "$@" &
+"$SCRIPT_DIR/bringtofront/build" "$@" &
 
 # Wait until all scripts are done
 wait &>/dev/null

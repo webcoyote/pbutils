@@ -7,3 +7,7 @@ mkdir -p "$DEST"
 
 cp "$SCRIPT_DIR/pbcopy/bin/Release/pbcopy.exe" "$DEST"
 cp "$SCRIPT_DIR/pbpaste/bin/Release/pbpaste.exe" "$DEST"
+
+if [[ -f "$SCRIPT_DIR/bringtofront/bin/Release/bringtofront.exe" ]]; then
+	cp "$SCRIPT_DIR/bringtofront/bin/Release/bringtofront.exe" "$DEST"
+fi
