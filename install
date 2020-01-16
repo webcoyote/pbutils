@@ -5,9 +5,6 @@ readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DEST="$HOME/bin"
 mkdir -p "$DEST"
 
-cp "$SCRIPT_DIR/pbcopy/bin/Release/pbcopy.exe" "$DEST"
-cp "$SCRIPT_DIR/pbpaste/bin/Release/pbpaste.exe" "$DEST"
-
-if [[ -f "$SCRIPT_DIR/bringtofront/bin/Release/bringtofront.exe" ]]; then
-	cp "$SCRIPT_DIR/bringtofront/bin/Release/bringtofront.exe" "$DEST"
-fi
+cp "$SCRIPT_DIR/pbcopy/bin/Release/netcoreapp3.1/pbcopy.exe" "$DEST"
+cp "$SCRIPT_DIR/pbpaste/bin/Release/netcoreapp3.1/pbpaste.exe" "$DEST"
+cp "$SCRIPT_DIR/bringtofront/bin/Release/netcoreapp3.1/bringtofront.exe" "$DEST"

@@ -11,7 +11,8 @@ namespace PbCopy
             StringBuilder output = new StringBuilder( string.Join(" ", args) );
             while ((s = Console.ReadLine()) != null)
                 output.AppendLine(s);
-
+            if (output.Length == 0)
+                return;
             Clipboard.SetText(output.ToString());
         }
     }
