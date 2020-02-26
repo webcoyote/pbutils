@@ -2,9 +2,17 @@
 set -euo pipefail
 readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-DEST="$HOME/bin"
+DEST="${DEST:-$HOME/bin}"
 mkdir -p "$DEST"
 
 cp "$SCRIPT_DIR/pbcopy/bin/Release/netcoreapp3.1/pbcopy.exe" "$DEST"
+cp "$SCRIPT_DIR/pbcopy/bin/Release/netcoreapp3.1/pbcopy.dll" "$DEST"
+cp "$SCRIPT_DIR/pbcopy/bin/Release/netcoreapp3.1/pbcopy.runtimeconfig.json" "$DEST"
+
 cp "$SCRIPT_DIR/pbpaste/bin/Release/netcoreapp3.1/pbpaste.exe" "$DEST"
+cp "$SCRIPT_DIR/pbpaste/bin/Release/netcoreapp3.1/pbpaste.dll" "$DEST"
+cp "$SCRIPT_DIR/pbpaste/bin/Release/netcoreapp3.1/pbpaste.runtimeconfig.json" "$DEST"
+
 cp "$SCRIPT_DIR/bringtofront/bin/Release/netcoreapp3.1/bringtofront.exe" "$DEST"
+cp "$SCRIPT_DIR/bringtofront/bin/Release/netcoreapp3.1/bringtofront.dll" "$DEST"
+cp "$SCRIPT_DIR/bringtofront/bin/Release/netcoreapp3.1/bringtofront.runtimeconfig.json" "$DEST"

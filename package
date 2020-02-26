@@ -2,10 +2,8 @@
 set -euo pipefail
 readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-DEST="$SCRIPT_DIR/output"
+export DEST="$SCRIPT_DIR/output"
 mkdir -p "$DEST"
+"$SCRIPT_DIR/install"
 
-cp "$SCRIPT_DIR/pbcopy/bin/Release/netcoreapp3.1/pbcopy.exe" "$DEST"
-cp "$SCRIPT_DIR/pbpaste/bin/Release/netcoreapp3.1/pbpaste.exe" "$DEST"
-cp "$SCRIPT_DIR/bringtofront/bin/Release/netcoreapp3.1/bringtofront.exe" "$DEST"
-zip -j9 "$DEST/pbutils.zip" "$DEST/"*.exe
+zip -j9 "$DEST/pbutils.zip" "$DEST/"*
