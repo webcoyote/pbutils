@@ -2,8 +2,12 @@
 set -euo pipefail
 readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-export DEST="$SCRIPT_DIR/output"
-mkdir -p "$DEST"
-"$SCRIPT_DIR/install"
+DST="$SCRIPT_DIR/.output"
+rm -rf "$DST"
+mkdir -p "$DST"
 
-zip -j9 "$DEST/pbutils.zip" "$DEST/"*
+"$SCRIPT_DIR/install" "$DST"
+
+zip -j9 "pbutils.zip" "$DST/"*
+
+rm -rf "$DST"

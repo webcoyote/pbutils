@@ -1,4 +1,6 @@
 bin/
 obj/
-output/
-/.vs/
+.vs/
+.vscode/
+.output/
+pbutils.zip

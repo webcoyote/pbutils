@@ -2,17 +2,16 @@
 set -euo pipefail
 readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-DEST="${DEST:-$HOME/bin}"
-mkdir -p "$DEST"
+DST="${1:-}"
+DST="${DST:-"$HOME/bin"}"
+mkdir -p "$DST"
 
-cp "$SCRIPT_DIR/pbcopy/bin/Release/netcoreapp3.1/pbcopy.exe" "$DEST"
-cp "$SCRIPT_DIR/pbcopy/bin/Release/netcoreapp3.1/pbcopy.dll" "$DEST"
-cp "$SCRIPT_DIR/pbcopy/bin/Release/netcoreapp3.1/pbcopy.runtimeconfig.json" "$DEST"
+"$SCRIPT_DIR/build" -c Release
 
-cp "$SCRIPT_DIR/pbpaste/bin/Release/netcoreapp3.1/pbpaste.exe" "$DEST"
-cp "$SCRIPT_DIR/pbpaste/bin/Release/netcoreapp3.1/pbpaste.dll" "$DEST"
-cp "$SCRIPT_DIR/pbpaste/bin/Release/netcoreapp3.1/pbpaste.runtimeconfig.json" "$DEST"
+while read -rd '' SRC; do
+    SRC_NAME="$(basename "$SRC")"
+    SRC_DIR="$SRC/bin/Release/netcoreapp3.1"
+    cp -f "$SRC_DIR/$SRC_NAME.exe" "$SRC_DIR/$SRC_NAME.dll" "$SRC_DIR/$SRC_NAME.runtimeconfig.json" "$DST"
+done < <(find "$SCRIPT_DIR" -mindepth 1 -maxdepth 1 -type d ! -iname "*.*" -print0)
 
-cp "$SCRIPT_DIR/bringtofront/bin/Release/netcoreapp3.1/bringtofront.exe" "$DEST"
-cp "$SCRIPT_DIR/bringtofront/bin/Release/netcoreapp3.1/bringtofront.dll" "$DEST"
-cp "$SCRIPT_DIR/bringtofront/bin/Release/netcoreapp3.1/bringtofront.runtimeconfig.json" "$DEST"
+cp "./tnet/bin/Release/netcoreapp3.1/CommandLine.dll" "$DST"

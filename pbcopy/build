@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 readonly SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-trap 'kill -- -$$ &>/dev/null' EXIT
 cd "$SCRIPT_DIR"
-dotnet build --nologo -c Release "$@"
+dotnet build --nologo "$@"
